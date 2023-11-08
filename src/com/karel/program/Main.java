@@ -1,30 +1,25 @@
 package com.karel.program;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class Main {
     public static void main(String[] args) {
-        RegistrationPlate reg1 = new RegistrationPlate("FI", "ABC-123");
+        VehicleRegister register = new VehicleRegister();
+
+        RegistrationPlate reg1 = new RegistrationPlate("AAA-123", "EST");
         RegistrationPlate reg2 = new RegistrationPlate("FI", "UXE-465");
-        RegistrationPlate reg3 = new RegistrationPlate("D", "B WQ-431");
 
-        ArrayList<RegistrationPlate> finnish = new ArrayList<RegistrationPlate>();
-        finnish.add(reg1);
-        finnish.add(reg2);
+        System.out.println("Adding owners to the register:");
+        System.out.println("Added: " + register.add(reg1, "Karel"));
+        System.out.println("Added: " + register.add(reg1, "Karl")); //false!!
+        
+        System.out.println("\nRetrieving owners from the register:");
+        System.out.println("Owner of " + reg1 + ": " + register.get(reg1));
+        System.out.println("Owner of " + reg2 + ": " + register.get(reg2)); //null!!
 
-        RegistrationPlate newPlate = new RegistrationPlate("FI", "ABC-123");
-        if (!finnish.contains(newPlate)) {
-            finnish.add(newPlate);
-        }
-        System.out.println("Finnish: " + finnish);
+        System.out.println("\nDeleting entries from the register:");
+        System.out.println("Deleted: " + register.delete(reg1));
+        System.out.println("Deleted: " + register.delete(reg2)); //false!!
 
-        HashMap<RegistrationPlate, String> owners = new HashMap<RegistrationPlate, String>();
-        owners.put(reg1, "Arto");
-        owners.put(reg3, "Jürgen");
-
-        System.out.println("owners:");
-        System.out.println(owners.get(new RegistrationPlate("FI", "ABC-123")));
-        System.out.println(owners.get(new RegistrationPlate("D", "B WQ-431")));
+        System.out.println("\nRetrieving owner after deletion:");
+        System.out.println("Owner of " + reg1 + ": " + register.get(reg1));
     }
 }
