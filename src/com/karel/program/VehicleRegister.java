@@ -1,6 +1,8 @@
 package com.karel.program;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class VehicleRegister {
     private HashMap<RegistrationPlate, String> owners;
@@ -27,5 +29,22 @@ public class VehicleRegister {
             return true;
         }
         return false;
+    }
+
+    public void printRegistrationPlates() {
+        for (RegistrationPlate plate : owners.keySet()) {
+            System.out.println(plate);
+        }
+    }
+
+    public void printOwners() {
+        Set<String> uniqueOwners = new HashSet<>();
+        for (String owner : owners.values()) {
+            uniqueOwners.add(owner);
+        }
+        System.out.println("Car Owners:");
+        for (String owner : uniqueOwners) {
+            System.out.println(owner);
+        }
     }
 }

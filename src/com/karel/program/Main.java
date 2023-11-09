@@ -5,21 +5,19 @@ public class Main {
         VehicleRegister register = new VehicleRegister();
 
         RegistrationPlate reg1 = new RegistrationPlate("AAA-123", "EST");
-        RegistrationPlate reg2 = new RegistrationPlate("FI", "UXE-465");
+        RegistrationPlate reg2 = new RegistrationPlate("UUU-666", "FI");
+        RegistrationPlate reg3 = new RegistrationPlate("ABC-321", "EST");
 
         System.out.println("Adding owners to the register:");
         System.out.println("Added: " + register.add(reg1, "Karel"));
-        System.out.println("Added: " + register.add(reg1, "Karl")); //false!!
+        System.out.println("Added: " + register.add(reg2, "Karl"));
+        System.out.println("Added: " + register.add(reg3, "Karel"));
         
-        System.out.println("\nRetrieving owners from the register:");
-        System.out.println("Owner of " + reg1 + ": " + register.get(reg1));
-        System.out.println("Owner of " + reg2 + ": " + register.get(reg2)); //null!!
+        
+        System.out.println("\nAll Registration Plates:");
+        register.printRegistrationPlates();
 
-        System.out.println("\nDeleting entries from the register:");
-        System.out.println("Deleted: " + register.delete(reg1));
-        System.out.println("Deleted: " + register.delete(reg2)); //false!!
-
-        System.out.println("\nRetrieving owner after deletion:");
-        System.out.println("Owner of " + reg1 + ": " + register.get(reg1));
+        System.out.println();
+        register.printOwners();
     }
 }
